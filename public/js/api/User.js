@@ -27,8 +27,7 @@ class User {
    * из локального хранилища
    * */
   static current() {
-    let current = localStorage.getItem('user');
-    return current;
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   /**
@@ -100,7 +99,7 @@ class User {
       url: this.URL + '/logout',
       method: 'POST',
       callback: (err, response) => {
-        if (response.success === 'true') {
+        if (response && response.success) {
           this.unsetCurrent();
         }
         callback(err, response);

@@ -21,14 +21,14 @@ const createRequest = (options = {}) => {
         }
     }
 
-    xhr.open(options.method, url);
-    xhr.send(formData);
+    
 
     try {
-        xhr.addEventListener("readystatechange", function () {
-            if (this.readyState == xhr.DONE && xhr.status === 200) {
-                options.callback(xhr.response.error, xhr.response);
-            }
+        xhr.open(options.method, url);
+        xhr.send(formData);
+        xhr.addEventListener("load", function () {
+            options.callback(null, xhr.response);
+            
         })
     } catch (error){
         options.callback(error);
