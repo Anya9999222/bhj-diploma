@@ -8,7 +8,7 @@ const createRequest = (options = {}) => {
 
     let {url, data, method, callback} = options;
     const formData = new FormData();
-
+    
     if(options.method === 'GET'){
         url = url + "?";
         for(let key in data){
@@ -21,16 +21,15 @@ const createRequest = (options = {}) => {
         }
     }
 
-    
+    xhr.addEventListener("load", function () {
+        options.callback(null, xhr.response);
+    })
 
     try {
         xhr.open(options.method, url);
         xhr.send(formData);
-        xhr.addEventListener("load", function () {
-            options.callback(null, xhr.response);
-            
-        })
     } catch (error){
+        console.log(error);
         options.callback(error);
     }
 };

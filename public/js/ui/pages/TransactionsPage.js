@@ -11,7 +11,11 @@ class TransactionsPage {
    * через registerEvents()
    * */
   constructor( element ) {
-
+    if(!element){
+      throw new Error('Передан пустой элемент');
+    }
+    this.element = element;
+    this.registerEvents();
   }
 
   /**
@@ -28,7 +32,11 @@ class TransactionsPage {
    * TransactionsPage.removeAccount соответственно
    * */
   registerEvents() {
+    const removeBtn = document.querySelector('.remove-account');
 
+    removeBtn.addEventListener('click', () => {
+      this.removeAccount();
+    })
   }
 
   /**

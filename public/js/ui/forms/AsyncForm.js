@@ -27,7 +27,6 @@ class AsyncForm {
   registerEvents() {
     this.element.addEventListener('submit', (e) =>{
       e.preventDefault();
-      console.log(this.element)
       this.submit();
     })
   }
@@ -40,16 +39,8 @@ class AsyncForm {
    * }
    * */
   getData() {
-    const form = document.getElementById(this.element.id),
-    formData = new FormData(form),
-    entries = formData.entries(),
-    data = {};
-    for (let item of entries) {
-      const key = item[ 0 ],
-        value = item[ 1 ];
-      data[`${key}`] = `${value}` ;
-    }
-    return data;
+    const formData = new FormData(this.element);
+    return Object.fromEntries(formData.entries());
   }
 
   onSubmit(options){

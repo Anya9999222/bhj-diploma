@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 /**
  * Класс Sidebar отвечает за работу боковой колонки:
  * кнопки скрытия/показа колонки в мобильной версии сайта
@@ -42,22 +40,20 @@ class Sidebar {
     const logout = document.querySelector('.menu-item_logout');
     
     login.addEventListener('click', () => {
-      const loginForm= App.getModal('login').element;
-      const mod = new Modal(loginForm);
-      mod.open();
+      App.getModal('login').open();
     })
 
     register.addEventListener('click', () => {
-      const regForm= App.getModal('register').element;
-      const mod = new Modal(regForm);
-      mod.open();
+      App.getModal('register').open();
     })
 
     logout.addEventListener('click', () => {
-      User.logout();
-      if(response.success){
-        App.setState('init');
-      }
+      User.logout((err, response) => {
+        if(response && response.success){
+          App.setState('init');
+        }
+      });
+      
     })
   }
 }
