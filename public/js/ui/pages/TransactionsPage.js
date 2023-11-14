@@ -109,9 +109,7 @@ class TransactionsPage {
     })
     Transaction.list(options, (err, response) => {
       if(response && response.success){
-        for ( const item in response.data){
-          this.renderTransactions(response.data[item]);
-        }
+          this.renderTransactions(response.data);
       }
     })    
   }
@@ -185,6 +183,10 @@ class TransactionsPage {
    * используя getTransactionHTML
    * */
   renderTransactions(data){
-    this.element.querySelector('.content').insertAdjacentHTML('afterbegin', this.getTransactionHTML(data) )
+    const form = this.element.querySelector('.content')
+    
+    form.innerHTML = data.reduce((html, item) => {
+      return  html += this.getTransactionHTML(item)
+    }, '')
   }
 }

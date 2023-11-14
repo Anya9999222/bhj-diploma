@@ -23,6 +23,16 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "shopping",
+      "user_id": "1",
+      "id": "3fi4je1wlosawe3q"
+    },
+    {
+      "name": "vacantion",
+      "user_id": "1",
+      "id": "3fi4jajslosawn7w"
     }
   ],
   "transactions": [
@@ -97,6 +107,24 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "3fi4j2w4loy3g85t",
+      "type": "income",
+      "name": "ghj",
+      "sum": 4545,
+      "account_id": "3fi4je1wlosawe3q",
+      "user_id": "1",
+      "created_at": "2023-11-14T08:51:07.984Z"
+    },
+    {
+      "id": "3fi4j6m0loy3ghwd",
+      "type": "expense",
+      "name": "hh",
+      "sum": 444,
+      "account_id": "3fi4je1wlosawe3q",
+      "user_id": "1",
+      "created_at": "2023-11-14T08:51:20.604Z"
     }
   ]
 }
